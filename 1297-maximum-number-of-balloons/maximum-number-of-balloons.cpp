@@ -1,32 +1,35 @@
-// class Solution {
-// public:
-//     int maxNumberOfBalloons(string text) {
-//         int n = text.size();
-//         unordered_map<char, int> have;
-//         for (char c : text) {
-//             have[c]++;
-//         }
-//         unordered_map<char, int> need;
-//         need['b'] = 1;
-//         need['a'] = 1;
-//         need['l'] = 2;
-//         need['o'] = 2;
-//         need['n'] = 1;
+class Solution {
+public:
+    int maxNumberOfBalloons(string text) {
+        int n = text.size();
 
-//         int res = INT_MAX;
+        unordered_map<char, int> have;
+        for (char c : text) {
+            have[c]++;
+        }
+        unordered_map<char, int> need;
+        need['b'] = 1;
+        need['a'] = 1;
+        need['l'] = 2;
+        need['o'] = 2;
+        need['n'] = 1;
 
-//         for(auto i : need) {
-//             char c = i.first;
-//             int fneed = i.second;
-//             int fhave = have[c];
-//             int times = fhave / fneed;
+        int res = INT_MAX;
 
-//             res= min(res,times);
-//         }
+        for(auto i : need) {
+            char c = i.first;
+            int fneed = i.second;
+            int fhave = have[c];
+            int times = fhave / fneed;
 
-//         return res;
-//     }
-// };
+            res= min(res,times);
+        }
+
+        return res;
+    }
+};
+
+
 
 // class Solution {
 // public:
@@ -45,11 +48,11 @@
 //             freq['n' - 'a']
 //         });
 //     }
-// };
+// // };
 
-class Solution {
-public:
-    int maxNumberOfBalloons(string text) {
+// class Solution {
+// public:
+//     int maxNumberOfBalloons(string text) {
     //     int n = text.size();
 
     //     unordered_map<char , int > have;
@@ -78,18 +81,18 @@ public:
 
     //     return res;
 
-    vector<int>freq(26 , 0 );
-        for(char c : text)  { 
-            freq[c - 'a']++;
-        }
+//     vector<int>freq(26 , 0 );
+//         for(char c : text)  { 
+//             freq[c - 'a']++;
+//         }
 
-        return min({
-            freq['b' - 'a'],
-            freq['a' - 'a'],
-            freq['l' - 'a']/2,
-            freq['o' - 'a']/2,
-            freq['n' - 'a']
-        });
+//         return min({
+//             freq['b' - 'a'],
+//             freq['a' - 'a'],
+//             freq['l' - 'a']/2,
+//             freq['o' - 'a']/2,
+//             freq['n' - 'a']
+//         });
 
-     }
-};
+//      }
+// };
