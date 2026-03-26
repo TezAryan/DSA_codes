@@ -8,45 +8,89 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+// class Solution {
+// public:
+//     ListNode* reverseBetween(ListNode* head, int left, int right) {
+//         if(head == NULL) return NULL;
+
+//         if(left == right) return head;
+
+//         ListNode* t = head;
+//         ListNode* before = NULL;
+//         int pos = 1;
+
+//         while( t != NULL) {
+//             if(pos < left) {
+//                 before = t;
+//                 t = t->next;
+//                 pos++;
+//                 continue;
+//             }
+
+//         ListNode* curr = t;
+//         ListNode* prev = NULL;
+//         int times = right - left + 1;
+
+//         while ( times--) {
+//             ListNode* jump = curr ->next;
+//             curr -> next = prev;
+//             prev = curr;
+//             curr = jump;
+//         }
+
+//         t-> next = curr;
+//         if(before) {
+//         before -> next = prev;
+//         return head;
+//         } else {
+//         return prev;
+//         }
+//         }
+//         return head;
+//     }
+// };
+
 class Solution {
 public:
     ListNode* reverseBetween(ListNode* head, int left, int right) {
-        if(head == NULL) return NULL;
 
-        if(left == right) return head;
+        if (head == NULL)
+            return NULL;
 
+        if (left == right)
+            return head;
         ListNode* t = head;
         ListNode* before = NULL;
         int pos = 1;
 
-        while( t != NULL) {
-            if(pos < left) {
+        while (t != NULL) {
+            if (pos < left) {
                 before = t;
                 t = t->next;
                 pos++;
                 continue;
-            }     
-        
-        
-        ListNode* curr = t;
-        ListNode* prev = NULL;
-        int times = right - left + 1;
+            }
 
-        while ( times--) {
-            ListNode* jump = curr ->next;
-            curr -> next = prev;
-            prev = curr;
-            curr = jump;
-        }
+            ListNode* curr = t;
+            ListNode* prev = NULL;
+            int times = right - left + 1;
 
-        t-> next = curr;
-        if(before) {
-        before -> next = prev;
-        return head;
-        } else {
-        return prev; 
+            while (times--) {
+                ListNode* jump = curr->next;
+                curr->next = prev;
+                prev = curr;
+                curr = jump;
+            }
+
+            t->next = curr;
+            if (before) {
+                before->next = prev;
+                return head;
+            } else {
+                return prev;
+            }
         }
-        }  
-        return head;
+            return head;
+        
     }
 };
