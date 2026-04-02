@@ -7,7 +7,7 @@ public:
         while ( i < n) { 
             int correct = nums[i] - 1;
 
-            if( nums[i] <= n && nums[i] != nums[correct]) {
+            if(  nums[i] != nums[correct]) {
                 swap(nums[i] , nums[correct]);
             } else {
                 i++;
