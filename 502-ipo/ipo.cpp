@@ -55,7 +55,7 @@ public:
                 idx++;
             }
 
-                if(pq.empty()) return w;
+                 if(pq.empty()) return w;
 
                 w = w + pq.top();
                 pq.pop();
