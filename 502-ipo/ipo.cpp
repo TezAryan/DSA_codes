@@ -35,36 +35,31 @@ class Solution {
 public:
     int findMaximizedCapital(int k, int w, vector<int>& profits, vector<int>& capital) {
         int n = profits.size();
-        vector<pair<int, int >> proj; 
-        for( int i = 0 ; i< n ; i++) {
+        vector<pair<int,int>> proj;
+
+        for(int i = 0 ; i < n ; i++) {
             proj.push_back({capital[i] , profits[i]});
         }
 
         sort(proj.begin() , proj.end());
-        priority_queue<int> pq ;
-
         int idx = 0;
+        priority_queue<int> pq;
 
-        while ( k-- ) {
-            while( idx < n) {
+        while( k--) {
+            while (idx < n) {
 
-                if(proj[idx].first > w ) 
-                break;
+                if(proj[idx].first > w) break;
 
                 pq.push(proj[idx].second);
                 idx++;
             }
 
-                 if(pq.empty()) return w;
+            if(pq.empty()) return w;
 
-                w = w + pq.top();
-                pq.pop();
-
-            
+            w += pq.top();
+            pq.pop();
         }
 
-        return w ;
-  
-
+        return w;
     }
 };
