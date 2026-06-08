@@ -21,7 +21,7 @@ public:
         
          q.push(root); 
 
-        while( !q.empty() ) {
+        while ( !q.empty() ) {
 
             TreeNode* node = q.front(); 
             q.pop(); 
