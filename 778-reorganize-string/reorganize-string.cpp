@@ -2,18 +2,18 @@ class Solution {
 public:
     string reorganizeString(string s) {
 
-        unordered_map<char, int> mp;
-
+       vector<int> freq ( 26 , 0);
         int n = s.size();
 
         for (auto it : s) {
-            mp[it]++;
+            freq[ it - 'a']++;
         }
 
         priority_queue < pair<int, char>> pq;
 
-        for (auto it : mp) {
-            pq.push({it.second, it.first});
+        for (int i = 0 ; i<26 ; i++) {
+            if( freq[i] > 0) 
+            pq.push({freq[i] , 'a' + i});
         }
 
             string ans = "";
